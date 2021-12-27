@@ -1,47 +1,69 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
 (setq user-full-name "Daniil Rose"
       user-mail-address "daniil.rose@member.fsf.org")
 
+;; I keep all my org mode notes synced with my iPad Air and Pixel 5a.
 (setq org-directory "~/Nextcloud/org/")
 
+;; I don't care to constantly see lines, and the performance boost is nice.
 (setq display-line-numbers-type nil)
 
+;; JetBrains Mono has been my favourite font since first learning to program
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Regular" :size 12)
+      ivy-posframe-font (font-spec :family "JetBrainsMono Nerd Font Regular" :size 15))
+
+
+;; Manual completion for company.
+(setq company-idle-delay nil)
+
+;; Nice things to see related to windows, and to use trash instead of perma delete.
 (setq-default
  window-combination-resize t
  delete-by-moving-to-trash t
  x-stretch-cursor t)
 
+;; Give me as much undo as you can.
 (setq undo-limit 80000000
       auto-save-default nil
       truncate-string-ellipsis "…"
       scroll-margin 20)
 
+;; Subword mode is nice.
 (with-eval-after-load 'subword
   (diminish 'subword-mode))
 (global-subword-mode 1)
 
+;; Keep files up to date.
 (setq global-auto-revert-non-file-buffers t)
 (global-auto-revert-mode 1)
 
+;; Scrolling should be one line at a time.
 (setq scroll-step 1)
 
+;; Disable invasive lsp-mode features
+(setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
+      lsp-ui-doc-enable nil        ; slow and redundant with K
+      lsp-enable-symbol-highlighting nil
+      +lsp-prompt-to-install-server 'quiet)
+
+;; I really don't like trailing whitespace.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Nice features when I'm on my MacBook Pro 16", which is essentially always.
 (when IS-MAC
   (setq mac-option-key-is-meta nil
         mac-command-key-is-meta t
         mac-command-modifier 'meta
         mac-option-modifier 'super))
 
+;; Nice to see the time.
 (display-time-mode 1)
-
-(unless (string-match-p "battery N/A" (battery))
-  (display-battery-mode 1))
 
 ;; Don't bring up key recipient dialogue.
 (require 'epa-file)
 (setq epa-file-select-keys 1)
-(setq epa-file-encrypt-to '("<danielrose@member.fsf.org>"))
+(setq epa-file-encrypt-to '("<daniil.rose@member.fsf.org>"))
 
 ;; Increase the password cache expiry time, technically doesn't do anything for GPG2
 (setq password-cache-expiry (* 60 15))
