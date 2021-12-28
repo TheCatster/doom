@@ -62,7 +62,7 @@
 (package! scad-mode)
 (package! scad-preview)
 
-(package! org-roam)
+(unpin! org-roam)
 (package! org-roam-ui)
 (package! org-cliplink)
 (package! org-web-tools)

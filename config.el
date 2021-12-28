@@ -10,8 +10,8 @@
 (setq display-line-numbers-type nil)
 
 ;; JetBrains Mono has been my favourite font since first learning to program
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Regular" :size 12)
-      ivy-posframe-font (font-spec :family "JetBrainsMono Nerd Font Regular" :size 15))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12)
+      ivy-posframe-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
 
 
 ;; Manual completion for company.
@@ -126,3 +126,14 @@
       :config
       (org-roam-setup)
       (require 'org-roam-protocol))
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
