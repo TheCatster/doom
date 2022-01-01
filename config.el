@@ -13,10 +13,6 @@
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 12)
       ivy-posframe-font (font-spec :family "JetBrainsMono Nerd Font" :size 15))
 
-
-;; Manual completion for company.
-(setq company-idle-delay nil)
-
 ;; Nice things to see related to windows, and to use trash instead of perma delete.
 (setq-default
  window-combination-resize t
@@ -47,9 +43,6 @@
       lsp-enable-symbol-highlighting nil
       +lsp-prompt-to-install-server 'quiet)
 
-;; I really don't like trailing whitespace.
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
 ;; Nice features when I'm on my MacBook Pro 16", which is essentially always.
 (when IS-MAC
   (setq mac-option-key-is-meta nil
@@ -72,10 +65,10 @@
 ;; From https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html.
 (setf epg-pinentry-mode 'loopback)
 (defun pinentry-emacs (desc prompt ok error)
-   (let ((str (read-passwd
-               (concat (replace-regexp-in-string "%22" "\""
-                                                 (replace-regexp-in-string "%0A" "\n" desc)) prompt ": "))))
-     str))
+  (let ((str (read-passwd
+              (concat (replace-regexp-in-string "%22" "\""
+                                                (replace-regexp-in-string "%0A" "\n" desc)) prompt ": "))))
+    str))
 
 ;; Email configuration
 (setq catster/use-mail nil)
@@ -92,6 +85,9 @@
         org-fontify-whole-heading-line nil
         org-hide-leading-stars nil
         org-startup-indented nil))
+
+;; Replace iSearch with Consult Line
+(map! :desc "Search buffer" :g "C-s" #'consult-line)
 
 ;;; Configuring Packages Defined in ~packages.el~
 
@@ -119,21 +115,22 @@
 
 (setq org-roam-v2-ack t)
 (use-package! org-roam
-      :custom
-      (org-roam-v2-ack t)
-      (org-roam-db-gc-threshold most-positive-fixnum)
-      (org-roam-directory (file-truename "~/Nextcloud/org/org-roam"))
-      :config
-      (org-roam-setup)
-      (require 'org-roam-protocol))
+  :custom
+  (org-roam-v2-ack t)
+  (org-roam-db-gc-threshold most-positive-fixnum)
+  (org-roam-directory (file-truename "~/Nextcloud/org/org-roam"))
+  :config
+  (org-roam-setup)
+  (require 'org-roam-protocol))
 
 (use-package! websocket
-    :after org-roam)
+  :after org-roam)
 
 (use-package! org-roam-ui
-    :after org-roam
-    :config
-    (setq org-roam-ui-sync-theme t
-          org-roam-ui-follow t
-          org-roam-ui-update-on-save t
-          org-roam-ui-open-on-start t))
+  :after org-roam
+  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
