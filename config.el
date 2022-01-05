@@ -78,16 +78,48 @@
   (require 'catsters-mail))
 
 ;; Improve org mode performance
-(remove-hook 'org-mode-hook #'org-superstar-mode)
-
 (after! org
   (setq org-fontify-quote-and-verse-blocks nil
         org-fontify-whole-heading-line nil
         org-hide-leading-stars nil
-        org-startup-indented nil))
+        ))
 
 ;; Replace iSearch with Consult Line
 (map! :desc "Search buffer" :g "C-s" #'consult-line)
+
+;; Replace splash screen so people stop asking why I'm playing a game
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+(add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
+(setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
+
+(defun doom-dashboard-draw-ascii-emacs-banner-fn ()
+  (let* ((banner
+          '("      ___          ___          ___          ___          ___ "
+            "     /\\__\\        /\\  \\        /\\  \\        /\\__\\        /\\__\\"
+            "    /:/ _/_      |::\\  \\      /::\\  \\      /:/  /       /:/ _/_"
+            "   /:/ /\\__\\     |:|:\\  \\    /:/\\:\\  \\    /:/  /       /:/ /\\  \\"
+            "  /:/ /:/ _/_  __|:|\\:\\  \\  /:/ /::\\  \\  /:/  /  ___  /:/ /::\\  \\"
+            " /:/_/:/ /\\__\\/::::|_\\:\\__\\/:/_/:/\\:\\__\\/:/__/  /\\__\\/:/_/:/\\:\\__\\"
+            " \\:\\/:/ /:/  /\\:\\~~\\  \\/__/\\:\\/:/  \\/__/\\:\\  \\ /:/  /\\:\\/:/ /:/  /"
+            "  \\::/_/:/  /  \\:\\  \\       \\::/__/      \\:\\  /:/  /  \\::/ /:/  /"
+            "   \\:\\/:/  /    \\:\\  \\       \\:\\  \\       \\:\\/:/  /    \\/_/:/  /"
+            "    \\::/  /      \\:\\__\\       \\:\\__\\       \\::/  /       /:/  /"
+            "     \\/__/        \\/__/        \\/__/        \\/__/        \\/__/"
+            ))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat
+                 line (make-string (max 0 (- longest-line (length line)))
+                                   32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+(unless (display-graphic-p) ; for some reason this messes up the graphical splash screen atm
+  (setq +doom-dashboard-ascii-banner-fn #'doom-dashboard-draw-ascii-emacs-banner-fn))
 
 ;;; Configuring Packages Defined in ~packages.el~
 
