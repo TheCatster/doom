@@ -1,23 +1,10 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a "Module Index" link where you'll find
-;;      a comprehensive list of Doom's modules and what flags they support.
-
-;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
-
 ;; add to $DOOMDIR/init.el
 (defvar native-comp-deferred-compilation-deny-list nil)
 
 (doom! :completion
+       (company)
        (vertico +icons)           ; the search engine of the future
 
        :ui
@@ -52,8 +39,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
+       ;(spell +flyspell) ; tasing you for misspelling mispelling
+       ;grammar           ; tasing grammar mistake every you make
 
        :tools
        ansible
@@ -77,10 +64,7 @@
        (clojure +lsp)           ; java with a lisp
        data              ; config/data formats
        (dart +lsp +flutter)   ; paint ui and not much else
-       ;;elixir            ; erlang done right
-       ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
-       ;;erlang            ; an elegant language for a more civilized age
        (go +lsp)         ; the hipster dialect
        (haskell +lsp)    ; a language that's lazier than I am
        hy                ; readability of scheme w/ speed of python
@@ -94,7 +78,7 @@
        (markdown +grip)          ; writing docs for people to ignore
        (org +dragndrop +gnuplot +jupyter +pandoc +present +pretty +roam2)               ; organize your plain life in plain text
        (php +lsp)               ; perl's insecure younger brother
-       (python +lsp +pyenv +poetry +cython)            ; beautiful is better than ugly
+       (python +lsp)            ; beautiful is better than ugly
        qt                ; the 'cutest' gui framework ever
        (racket +lsp)            ; a DSL for DSLs
        rest              ; Emacs as a REST client

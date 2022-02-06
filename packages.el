@@ -51,6 +51,8 @@
 
 (package! diminish)
 
+(package! company-tabnine)
+
 (package! default-text-scale)
 
 (package! super-save)
@@ -66,3 +68,5 @@
 (package! org-roam-ui)
 (package! org-cliplink)
 (package! org-web-tools)
+
+(package! hackernews)

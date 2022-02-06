@@ -37,6 +37,18 @@
 ;; Scrolling should be one line at a time.
 (setq scroll-step 1)
 
+;; Fix SSL issues
+(setq gnutls-min-prime-bits 1024)
+(setq gnutls-algorithm-priority "SECURE128:-VERS-SSL3.0:-VERS-TLS1.3")
+(setq ssl-certificate-directory "/etc/ssl/certs")
+(setq ssl-program-name "gnutls-cli")
+(setq ssl-program-arguments
+      '("--port" service
+        "--x509cafile" "/etc/ssl/certs/ca-certificates.crt"
+        "--priority" "SECURE:-VERS-SSL3.0"
+        "--priority" "SECURE128:-VERS-SSL3.0:-VERS-TLS1.3"
+        host))
+
 ;; Disable invasive lsp-mode features
 (setq lsp-ui-sideline-enable nil   ; not anymore useful than flycheck
       lsp-ui-doc-enable nil        ; slow and redundant with K
@@ -123,6 +135,15 @@
 
 ;;; Configuring Packages Defined in ~packages.el~
 
+(use-package! company
+  :config
+  (setq company-idle-delay 0)
+  (setq company-show-numbers t)
+  (setq company-tooltip-limit 10)
+  (setq company-minimum-prefix-length 2)
+  (setq company-tooltip-align-annotations t)
+  (setq company-tooltip-flip-when-above t))
+
 (use-package! auto-sudoedit-mode
   :defer 1
   :diminish auto-sudoedit-mode
@@ -166,3 +187,10 @@
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start t))
+
+(use-package! hackernews
+  :commands (hackernews))
+
+(use-package! company-tabnine
+  :config
+  (add-to-list 'company-backends #'company-tabnine))
