@@ -191,10 +191,6 @@
 (use-package! hackernews
   :commands (hackernews))
 
-(use-package! company-tabnine
-  :config
-  (add-to-list 'company-backends #'company-tabnine))
-
 ;;; EXWM
 (setq catster/use-exwm t)
 (when catster/use-exwm

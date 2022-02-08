@@ -51,8 +51,6 @@
 
 (package! diminish)
 
-(package! company-tabnine)
-
 (package! default-text-scale)
 
 (package! super-save)
