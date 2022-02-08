@@ -1,2 +1,5 @@
 # Email config
 mu4e/
+
+# Emacs crap
+*~

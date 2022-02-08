@@ -198,4 +198,5 @@
 ;;; EXWM
 (setq catster/use-exwm nil)
 (when catster/use-exwm
-  (require 'catster-exwm))
+  (add-to-list 'load-path "~/.doom.d/exwm")
+  (require 'catsters-exwm))

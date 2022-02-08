@@ -1,0 +1,33 @@
+#!/bin/sh
+# X11 screens (xrandr graphics outputs) I want to use. Names and values are from the output of /usr/bin/xrandr
+# They can be ordered in any way you want. The leftmost available screen will be primary, unless overridden
+# by X11_SCREEN_PREFERRED and that screen is available.
+# The primary screen is the default screen used for EXWM workspaces.
+# It will also be sorted first in Xinerama and RANDR geometry requests.
+export X11_SCREEN_LIST="eDP1 HDMI1 DP1-1"
+# xrandr --mode for each screen in X11_SCREEN_LIST
+export X11_SCREEN_MODE_LIST="1920x1080 1920x1080 1920x1080"
+# xrandr --rate for each screen in X11_SCREEN_LIST
+export X11_SCREEN_RATE_LIST="60.00 60.00 60.00"
+# How screens are arranged from left to right. Vertical order, and "--same-as" not yet implemented.
+export X11_SCREEN_ORDER_LIST="eDP1 HDMI1 DP1-1"
+# X11 screens (graphics outputs) that should always be explicitly turned off, if available.
+export X11_SCREEN_DISABLED_LIST="VIRTUAL1"
+# Primary X11 screen, if available
+export X11_SCREEN_PREFERRED="eDP1"
+# If X11_SCREEN_USE_ALL_AVAILABLE="yes" then use all available screens in X11_SCREEN_LIST:
+# - X11_SCREEN_PREFERRED is primary, if available
+# - If X11_SCREEN_PREFERRED is unavailable, primary is first available screen in X11_SCREEN_LIST.
+# Otherwise use only one:
+# - X11_SCREEN_PREFERRED if available
+# - If X11_SCREEN_PREFERRED is unavailable then use first available screen in X11_SCREEN_LIST.
+export X11_SCREEN_USE_ALL_AVAILABLE="yes"
+# Argument value for "xrandr --dpi", i.e. Dots Per Inch. This is for the X11 DISPLAY, i.e. used for all screens.
+export X11_DISPLAY_DPI=96
+# List of pairs "workspace-number screen"
+# Used to construct exwm-randr-workspace-monitor-plist in emacs.
+# If a screen in this list is unavailable, the workspace will be mapped to the primary screen.
+# When not using the dock, use the following:
+# export EXWM_WORKSPACE_LIST="0 eDP1 1 HDMI1 2 eDP1 3 HDMI1 4 eDP1 5 HDMI1 6 eDP1 7 HDMI1 8 eDP1 9 HDMI1"
+# When using the dock, use the following:
+export EXWM_WORKSPACE_LIST="0 eDP1 1 DP1-1 2 eDP1 3 DP1-1 4 eDP1 5 DP1-1 6 eDP1 7 DP1-1 8 eDP1 9 DP1-1"
