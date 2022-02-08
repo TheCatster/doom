@@ -196,7 +196,7 @@
   (add-to-list 'company-backends #'company-tabnine))
 
 ;;; EXWM
-(setq catster/use-exwm nil)
+(setq catster/use-exwm t)
 (when catster/use-exwm
   (add-to-list 'load-path "~/.doom.d/exwm")
   (require 'catsters-exwm))

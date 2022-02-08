@@ -1,12 +1,12 @@
 #!/bin/sh
-#. ~/.doom.d/exwm/exwm_screen_layout
-#~/.doom.d/exwm/exwm_xrandr.bash
+# Set keybinds for optimal Emacsing
+. "$HOME/.doom.d/exwm/set_xmodmap.sh"
 
 # Set default cursor, instead of the typical "x."
-#xsetroot -cursor_name left_ptr
+xsetroot -cursor_name left_ptr
 
 # Start NetworkManager applet for easier WiFi access and preventing network-manager-config from crashing (why does that happen?)
-# nm-applet &
+nm-applet &
 
 # Instead of launching multiple Emacsen, I already have a server
 # running. Use that instead as the EDITOR.
