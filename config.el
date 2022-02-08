@@ -199,4 +199,5 @@
 (setq catster/use-exwm t)
 (when catster/use-exwm
   (add-to-list 'load-path "~/.doom.d/exwm")
+  (display-battery-mode 1)
   (require 'catsters-exwm))
