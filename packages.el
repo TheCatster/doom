@@ -70,3 +70,10 @@
 (package! org-web-tools)
 
 (package! hackernews)
+
+(package! exwm)
+(package! windower)
+(package! app-launcher
+  :recipe (:host github :repo "SebastienWae/app-launcher"))
+(package! exwm-mff
+  :recipe (:host github :repo "ieure/exwm-mff"))

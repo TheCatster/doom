@@ -76,7 +76,7 @@
        (latex +lsp +cdlatex +fold)             ; writing papers in Emacs has never been so fun
        (lua +lsp +fennel +moonscript) ; one-based indices I guess
        (markdown +grip)          ; writing docs for people to ignore
-       (org +dragndrop +gnuplot +jupyter +pandoc +present +pretty +roam2)               ; organize your plain life in plain text
+       (org +dragndrop +gnuplot +jupyter +pandoc +present +roam2)               ; organize your plain life in plain text
        (php +lsp)               ; perl's insecure younger brother
        (python +lsp)            ; beautiful is better than ugly
        qt                ; the 'cutest' gui framework ever

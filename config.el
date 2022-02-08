@@ -194,3 +194,8 @@
 (use-package! company-tabnine
   :config
   (add-to-list 'company-backends #'company-tabnine))
+
+;;; EXWM
+(setq catster/use-exwm nil)
+(when catster/use-exwm
+  (require 'catster-exwm))
