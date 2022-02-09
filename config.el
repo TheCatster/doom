@@ -3,6 +3,9 @@
 (setq user-full-name "Daniil Rose"
       user-mail-address "daniil.rose@member.fsf.org")
 
+;; Load private scripts
+(add-to-list 'load-path "~/.doom.d/lisp/")
+
 ;; I keep all my org mode notes synced with my iPad Air and Pixel 5a.
 (setq org-directory "~/Nextcloud/org/")
 
