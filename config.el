@@ -6,6 +6,11 @@
 ;; Load private scripts
 (add-to-list 'load-path "~/.doom.d/lisp/")
 
+;; Custom feature flags
+(setq catster/use-mail nil)
+(setq catster/use-exwm nil)
+(setq catster/use-irc t)
+
 ;; I keep all my org mode notes synced with my iPad Air and Pixel 5a.
 (setq org-directory "~/Nextcloud/org/")
 
@@ -86,8 +91,6 @@
     str))
 
 ;; Email configuration
-(setq catster/use-mail nil)
-
 (when catster/use-mail
   (add-to-list 'load-path "~/.doom.d/mu4e/")
   (require 'catsters-mail))
@@ -194,8 +197,11 @@
 (use-package! hackernews
   :commands (hackernews))
 
+;;; IRC
+(when catster/use-irc
+  (require 'irc-config))
+
 ;;; EXWM
-(setq catster/use-exwm nil)
 (when catster/use-exwm
   (add-to-list 'load-path "~/.doom.d/exwm")
   (display-battery-mode 1)
