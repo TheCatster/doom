@@ -192,7 +192,7 @@
   :commands (hackernews))
 
 ;;; EXWM
-(setq catster/use-exwm t)
+(setq catster/use-exwm nil)
 (when catster/use-exwm
   (add-to-list 'load-path "~/.doom.d/exwm")
   (display-battery-mode 1)
