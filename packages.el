@@ -75,3 +75,5 @@
   :recipe (:host github :repo "SebastienWae/app-launcher"))
 (package! exwm-mff
   :recipe (:host github :repo "ieure/exwm-mff"))
+
+(package! jenkinsfile-mode)
