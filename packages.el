@@ -77,3 +77,5 @@
   :recipe (:host github :repo "ieure/exwm-mff"))
 
 (package! jenkinsfile-mode)
+
+(package! blamer)
