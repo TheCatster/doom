@@ -168,55 +168,15 @@
   (super-save-mode +1)
   (setq super-save-auto-save-when-idle t))
 
-(use-package! atom-one-dark-theme
-  :config
-  (load-theme 'atom-one-dark t))
-
-(setq org-roam-v2-ack t)
-(use-package! org-roam
-  :custom
-  (org-roam-v2-ack t)
-  (org-roam-db-gc-threshold most-positive-fixnum)
-  (org-roam-directory (file-truename "~/Nextcloud/org/org-roam"))
-  :config
-  (org-roam-setup)
-  (require 'org-roam-protocol))
-
-(use-package! websocket
-  :after org-roam)
-
-(use-package! org-roam-ui
-  :after org-roam
-  :hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
-
-(use-package! hackernews
-  :commands (hackernews))
-
-(use-package blamer
-  :bind (("s-i" . blamer-show-commit-info))
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 110
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+  (use-package! hackernews
+    :commands (hackernews))
 
 ;;; IRC
-(when catster/use-irc
-  (require 'irc-config))
+  (when catster/use-irc
+    (require 'irc-config))
 
 ;;; EXWM
-(when catster/use-exwm
-  (add-to-list 'load-path "~/.doom.d/exwm")
-  (display-battery-mode 1)
-  (require 'catsters-exwm))
+  (when catster/use-exwm
+    (add-to-list 'load-path "~/.doom.d/exwm")
+    (display-battery-mode 1)
+    (require 'catsters-exwm))

@@ -55,15 +55,11 @@
 
 (package! super-save)
 
-(package! atom-one-dark-theme)
-
 (package! caddyfile-mode)
 
 (package! scad-mode)
 (package! scad-preview)
 
-(unpin! org-roam)
-(package! org-roam-ui)
 (package! org-cliplink)
 (package! org-web-tools)
 
@@ -76,6 +72,7 @@
 (package! exwm-mff
   :recipe (:host github :repo "ieure/exwm-mff"))
 
-(package! jenkinsfile-mode)
+;; This has been broken for a while :(
+;; (package! jenkinsfile-mode)
 
-(package! blamer)
+(package! live-py-mode)
