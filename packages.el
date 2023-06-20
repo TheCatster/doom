@@ -57,22 +57,21 @@
 
 (package! caddyfile-mode)
 
-(package! scad-mode)
-(package! scad-preview)
-
 (package! org-cliplink)
 (package! org-web-tools)
 
+(package! live-py-mode)
+
+(package! tokei)
+
 (package! hackernews)
 
-(package! exwm)
-(package! windower)
-(package! app-launcher
-  :recipe (:host github :repo "SebastienWae/app-launcher"))
-(package! exwm-mff
-  :recipe (:host github :repo "ieure/exwm-mff"))
+(package! calctex :recipe (:host github :repo "johnbcoughlin/calctex"
+                           :files ("*.el" "calctex/*.el" "calctex-contrib/*.el" "org-calctex/*.el" "vendor"))
+  :pin "67a2e76847a9ea9eff1f8e4eb37607f84b380ebb")
 
-;; This has been broken for a while :(
-;; (package! jenkinsfile-mode)
+(package! laas :recipe (:local-repo "lisp/LaTeX-auto-activating-snippets"))
 
-(package! live-py-mode)
+(package! prisma-mode :recipe (:host github :repo "pimeys/emacs-prisma-mode" :branch "main"))
+
+(package! color-theme-sanityinc-tomorrow)
