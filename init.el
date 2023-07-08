@@ -4,7 +4,7 @@
 (defvar native-comp-deferred-compilation-deny-list nil)
 
 (doom! :completion
-       (company)
+       (company +tng +childframe)
        (vertico +icons)           ; the search engine of the future
 
        :ui

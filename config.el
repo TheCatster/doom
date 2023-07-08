@@ -6,6 +6,9 @@
 ;; Load private scripts
 (add-to-list 'load-path "~/.doom.d/lisp/")
 
+;; Workaround for SVG error
+(setq image-types (cons 'svg image-types))
+
 ;; Custom feature flags
 (setq catster/use-mail nil)
 (setq catster/use-exwm nil)
@@ -22,11 +25,6 @@
 
 ;; Hide modeline in treemacs
 (add-hook 'treemacs-mode-hook 'hide-mode-line-mode)
-
-;; Change the colorscheme
-(use-package! color-theme-sanityinc-tomorrow
-  :init
-  (load-theme 'sanityinc-tomorrow-eighties t))
 
 ;; JetBrains Mono has been my favourite font since first learning to program
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 14)
@@ -147,8 +145,7 @@
                "\n"))
      'face 'doom-dashboard-banner)))
 
-(unless (display-graphic-p) ; for some reason this messes up the graphical splash screen atm
-  (setq +doom-dashboard-ascii-banner-fn #'doom-dashboard-draw-ascii-emacs-banner-fn))
+(setq +doom-dashboard-ascii-banner-fn #'doom-dashboard-draw-ascii-emacs-banner-fn)
 
 ;;; Configuring Packages Defined in ~packages.el~
 
@@ -728,3 +725,21 @@ preview-default-preamble "\\fi}\"%' \"\\detokenize{\" %t \"}\""))
 
 (when EMACS28+
   (add-hook 'latex-mode-hook #'TeX-latex-mode))
+
+;; Accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+;; Currenty not working :(
+;; ;; Change the colorscheme
+;; (use-package! catppuccin-theme
+;;   :custom
+;;   (catppuccin-flavor 'frappe)
+;;   :config
+;;   (setq doom-theme 'catppuccin)
+;;   (catppuccin-reload))
