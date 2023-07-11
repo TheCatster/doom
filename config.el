@@ -149,15 +149,6 @@
 
 ;;; Configuring Packages Defined in ~packages.el~
 
-(use-package! company
-  :config
-  (setq company-idle-delay 0)
-  (setq company-show-numbers t)
-  (setq company-tooltip-limit 10)
-  (setq company-minimum-prefix-length 2)
-  (setq company-tooltip-align-annotations t)
-  (setq company-tooltip-flip-when-above t))
-
 (use-package! auto-sudoedit-mode
   :defer 1
   :diminish auto-sudoedit-mode
@@ -725,15 +716,6 @@ preview-default-preamble "\\fi}\"%' \"\\detokenize{\" %t \"}\""))
 
 (when EMACS28+
   (add-hook 'latex-mode-hook #'TeX-latex-mode))
-
-;; Accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 ;; Currenty not working :(
 ;; ;; Change the colorscheme

@@ -4,7 +4,6 @@
 (defvar native-comp-deferred-compilation-deny-list nil)
 
 (doom! :completion
-       (company +tng +childframe)
        (vertico +icons)           ; the search engine of the future
 
        :ui
@@ -71,7 +70,7 @@
        (latex +latexmk +cdlatex +fold)             ; writing papers in Emacs has never been so fun
        (lua +lsp)
        (markdown +grip)          ; writing docs for people to ignore
-       (org +dragndrop +gnuplot +jupyter +pandoc +present)               ; organize your plain life in plain text
+       (org +pretty +dragndrop +gnuplot +jupyter +pandoc +present)               ; organize your plain life in plain text
        (python +lsp +pyright +pyenv)            ; beautiful is better than ugly
        (racket +lsp)            ; a DSL for DSLs
        rest              ; Emacs as a REST client
