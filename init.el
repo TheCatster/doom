@@ -52,7 +52,6 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-        +ranger          ; bringing the goodness of ranger to dired
         +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
@@ -128,7 +127,7 @@
        ;; lua              ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       nix                 ; I hereby declare "nix geht mehr!"
+       ;;nix                 ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag & drop files/images into org buffers
@@ -147,8 +146,8 @@
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       scala               ; java, but good
-       (scheme +guile)     ; a fully conniving family of lisps
+       ;;scala               ; java, but good
+       ;;(scheme +guile)     ; a fully conniving family of lisps
        sh                  ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
@@ -156,15 +155,15 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        web                 ; the tubes
        yaml                ; JSON, but readable
-       ;;zig               ; C, but simpler
+       zig               ; C, but simpler
 
        :email
        (mu4e +org +gmail)
 
        :app
        calendar
-       emms
-       irc                 ; how neckbeards socialize
+       ;;emms
+       ;;irc                 ; how neckbeards socialize
        (rss +org)          ; emacs as an RSS reader
 
        :config

@@ -1,33 +1,12 @@
 ;;; +ui.el -*- lexical-binding: t; -*-
 
-;; Causing issues with Rust Analyzer
-;; (use-package! catppuccin-theme
-;;   :config
-;;   (load-theme 'catppuccin t t)
-;;   (setq catppuccin-flavor 'frappe)
-;;   (catppuccin-reload)
-;;   (setq doom-theme 'catppuccin))
+(setq resolution-factor 1)
 
-(defun adjust-font-sizes ()
-  "This fixes my issues with fonts when starting as a daemon"
-  (interactive)
-  (setq user-font
-        (cond
-         ((find-font (font-spec :name "JetBrainsMono Nerd Font")) "JetBrainsMono Nerd Font")
-         ((find-font (font-spec :name "Droid Sans Fallback")) "Droid Sans Fallback")))
-
-  ;; calculate the font size based on display-pixel-height
-  (setq resolution-factor 1.33)
-  (when (display-graphic-p)
-    (setq resolution-factor (eval (/ (x-display-pixel-height) 1440.0))))
-  (setq doom-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
-        doom-big-font (font-spec :family user-font :size (eval (round (* 18 resolution-factor))))
-        doom-variable-pitch-font (font-spec :family user-font :size (eval (round (* 13 resolution-factor))))
-        +modeline-height (eval (round (* 14 resolution-factor))))
-  (setq doom-font-increment 1))
-
-(adjust-font-sizes)
-(add-hook 'window-size-change-functions #'adjust-font-sizes)
+;; JetBrains Mono has been my favourite font since first learning to program
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (eval (round (* 13 resolution-factor)))))
+(setq doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size (eval (round (* 18 resolution-factor)))))
+(setq +modeline-height (eval (round (* 14 resolution-factor))))
+(setq doom-font-increment 1)
 
 ;; Update window divider in terminal
 ;; https://www.reddit.com/r/emacs/comments/3u0d0u/how_do_i_make_the_vertical_window_divider_more/
@@ -50,16 +29,16 @@
 
 (remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 
-;; disable line-numbers by default
-(setq display-line-numbers-type nil)
+;; I actually have grown to really appreciate line numbers
+(setq display-line-numbers-type t)
 
 (defface breakpoint-enabled '((t)) "Breakpoint face.")
 
-;; (when IS-MAC
-;;   ;; enable ligatures support
-;;   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
-;;   (ignore-errors
-;;     (mac-auto-operator-composition-mode)))
+(when IS-MAC
+  ;; enable ligatures support
+  ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
+  (ignore-errors
+    (mac-auto-operator-composition-mode)))
 
 
 (after! ibuffer
@@ -74,6 +53,7 @@
                 (mark " "
                       (name 16 -1)
                       " " filename))))
+
 
 (use-package! all-the-icons-ibuffer
   :after ibuffer

@@ -10,10 +10,13 @@
 (load! "+latex")
 (cond
  ((modulep! :tools lsp +eglot) (load! "+eglot"))
- ((modulep! :tools lsp) (load! "+lsp")))
+ ((modulep! :tools lsp) (load! "+lsp"))
+ ((modulep! :os macos) (load! "+mac")))
 
 (setq user-full-name "Daniil Rose"
       user-mail-address "daniil.rose@posteo.org")
+
+(setq tramp-verbose 6)
 
 (setq doom-scratch-buffer-major-mode 'emacs-lisp-mode
       confirm-kill-emacs nil)

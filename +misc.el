@@ -21,12 +21,11 @@
     (ignore-errors (apply orig-fn args)))
   (advice-add 'nav-flash-show :around #'+advice/nav-flash-show))
 
-;; Use ) key to toggle it
 (after! dired
-  ;; Rust version ls
-  (when-let (exa (executable-find "exa"))
-    (setq insert-directory-program exa)
-    (setq dired-listing-switches (string-join (list "-ahl" "--group-directories-first") " "))))
+  :config
+  (when (string= system-type "darwin")
+    (setq dired-use-ls-dired t
+          insert-directory-program "gls")))
 
 (use-package! dired-x
   :config
