@@ -31,15 +31,18 @@
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        indent-guides     ; highlighted indent columns
-       ligatures         ; ligatures and symbols to make your code pretty again
+       (ligatures +fira +hasklig +iosevka +pragmata-pro)         ; ligatures and symbols to make your code pretty again
        (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ophints           ; highlight the region an operation acts on
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
+       (treemacs +lsp)
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
+       window-select
+       workspaces
        zen               ; distraction-free coding or writing
 
        :editor
@@ -55,7 +58,7 @@
         +icons)          ; colorful icons for dired-mode
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
+       (undo +tree)      ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
@@ -71,12 +74,12 @@
        biblio
        (debugger +lsp)
        direnv
-       docker
+       (docker +lsp)
        editorconfig
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)   ; run code, run (also, repls)
        ;;gist            ; interacting with github gists
-       (lookup +dictionary +devdocs +docsets)
+       (lookup +dictionary +docsets +offline)
        (lsp +peek)
 
        magit             ; a git porcelain for Emacs
