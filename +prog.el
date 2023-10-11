@@ -29,6 +29,9 @@
 (use-package! bazel-mode
   :defer t)
 
+;; Style is very important when contributing to the kernel
+(setq c-default-style "linux")
+
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . +cc-c-c++-objc-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . +cc-c-c++-objc-mode))
 
