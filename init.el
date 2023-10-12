@@ -82,7 +82,7 @@
        (lookup +dictionary +docsets +offline)
        (lsp +peek)
 
-       magit             ; a git porcelain for Emacs
+       (magit +forge)    ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
@@ -96,7 +96,7 @@
        :lang
        ;;agda              ; types of types of types of types...
        (cc +lsp)           ; C/C++/Obj-C madness
-       clojure             ; java with a lisp
+       (clojure +lsp)      ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
@@ -119,16 +119,16 @@
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       json                ; At least it ain't XML
+       (json +lsp)                ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        (javascript +lsp)
-       julia               ; a better, faster MATLAB
+       (julia +snail)      ; a better, faster MATLAB
        ;; kotlin           ; a better, slicker Java(Script)
-       latex               ; writing papers in Emacs has never been so fun
+       (latex +cdlatex +fold +lsp) ; writing papers in Emacs has never been so fun
        ;;lean
        ;;ledger            ; an accounting system in Emacs
        ;; lua              ; one-based indices? one-based indices
-       markdown            ; writing docs for people to ignore
+       (markdown +grip)    ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix                 ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
@@ -145,28 +145,26 @@
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       rest                ; Emacs as a REST client
+       (rest +jq)          ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       ;;scala               ; java, but good
-       ;;(scheme +guile)     ; a fully conniving family of lisps
-       sh                  ; she sells {ba,z,fi}sh shells on the C xor
+       ;;scala             ; java, but good
+       ;;(scheme +guile)   ; a fully conniving family of lisps
+       (sh +lsp)           ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       web                 ; the tubes
-       yaml                ; JSON, but readable
-       zig               ; C, but simpler
+       (web +lsp)          ; the tubes
+       (yaml +lsp)         ; JSON, but readable
+       (zig +lsp)          ; C, but simpler
 
        :email
        (mu4e +org +gmail)
 
        :app
        calendar
-       ;;emms
-       ;;irc                 ; how neckbeards socialize
        (rss +org)          ; emacs as an RSS reader
 
        :config
