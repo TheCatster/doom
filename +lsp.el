@@ -9,7 +9,9 @@
                                   "--header-insertion-decorators=0"))
   (set-lsp-priority! 'clangd 2)
   (after! dap-mode
-    (require 'dap-codelldb)))
+    (require 'dap-codelldb)
+    (setq dap-auto-configure-mode t)
+    (require 'dap-cpptools)))
 
 ;; Typescript
 (setq lsp-clients-typescript-init-opts
