@@ -47,13 +47,13 @@
 
     (push dir lsp-file-watch-ignored-directories)))
 
-;; (after! lsp-ui
-;;   (setq lsp-ui-doc-enable nil
-;;         lsp-lens-enable nil
-;;         lsp-ui-sideline-enable nil
-;;         lsp-ui-doc-include-signature nil
-;;         lsp-ui-doc-max-height 15
-;;         lsp-ui-doc-max-width 100))
+(after! lsp-ui
+  (setq lsp-ui-doc-enable nil
+        lsp-lens-enable nil
+        lsp-ui-sideline-enable nil
+        lsp-ui-doc-include-signature nil
+        lsp-ui-doc-max-height 15
+        lsp-ui-doc-max-width 100))
 
 (use-package lsp-docker
   :when (not (modulep! :tools lsp +eglot))

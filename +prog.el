@@ -58,9 +58,6 @@
       (:remove  . ("%e")))
     :default "c++"))
 
-
-(after! realgud (advice-remove #'realgud:terminate #'+debugger--cleanup-after-realgud-a))
-
 (when (modulep! :tools debugger)
   (defun +my/dap-start ()
     (interactive)
@@ -71,10 +68,10 @@
     (doom/kill-matching-buffers " stderr*" (buffer-list))
     (doom/kill-matching-buffers " out*" (buffer-list)))
 
-  ;; (add-hook! dap-mode-hook ((tooltip-mode 1)))
+  (add-hook! dap-mode-hook ((tooltip-mode 1)))
 
   (after! dap-mode
-    ;; (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
+    (setq dap-auto-configure-features '(sessions locals expressions controls tooltip))
     (setq lsp-enable-dap-auto-configure nil)
 
     ;; use M-u to exit dap-hydra

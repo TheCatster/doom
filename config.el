@@ -4,7 +4,7 @@
 (load! "+git")
 (load! "+misc")
 (load! "+text")
-(load! "+prog")
+;; (load! "+prog")
 (load! "+ui")
 (load! "+keys")
 (load! "+latex")

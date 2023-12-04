@@ -62,7 +62,7 @@
                      (let ((default-time (or default-time
                                              org-default-time)))
                        (apply old-time a b c d f default-time g)))))
-                       
+
         (apply func arg time))))
 
   (advice-add #'org-deadline :around #'advise-org-default-time)
@@ -118,7 +118,7 @@
   :config
   (setq tldr-directory-path (concat doom-etc-dir "tldr/"))
   (set-popup-rule! "^\\*tldr\\*" :side 'right :select t :quit t))
-  
+
 
 (use-package! link-hint :defer t)
 
@@ -139,3 +139,22 @@
 (add-hook! 'pdf-view-mode (pdf-view-themed-minor-mode 1))
 (add-hook! 'pdf-view-mode (pdf-annot-minor-mode 0))
 (add-hook! 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+
+;; ;; ;; ;; ;;
+;; Obsidian ;;
+;; ;; ;; ;; ;;
+
+(use-package! obsidian
+  :config
+  (obsidian-specify-path "~/Main Vault")
+  (global-obsidian-mode t)
+  :custom
+  ;; This directory will be used for `obsidian-capture' if set.
+  (obsidian-inbox-directory "Inbox")
+  :bind (:map obsidian-mode-map
+  ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+  ("C-c C-o" . obsidian-follow-link-at-point)
+  ;; Jump to backlinks
+  ("C-c C-b" . obsidian-backlink-jump)
+  ;; If you prefer you can use `obsidian-insert-link'
+  ("C-c C-l" . obsidian-insert-wikilink)))

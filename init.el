@@ -80,7 +80,7 @@
        (eval +overlay)   ; run code, run (also, repls)
        ;;gist            ; interacting with github gists
        (lookup +dictionary +docsets +offline)
-       (lsp +peek)
+       (lsp)
 
        (magit +forge)    ; a git porcelain for Emacs
        make              ; run make tasks from Emacs

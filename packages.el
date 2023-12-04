@@ -1,19 +1,19 @@
 ;; -*- no-byte-compile: t; -*-
 
-;; disabled packages
-(disable-packages! solaire-mode
-                   osx-trash
-                   realgud
-                   realgud-trepan-ni
-                   ccls
-                   tide
-                   swiper
-                   forge
-                   code-review
-                   anaconda-mode
-                   company-anaconda
-                   lsp-python-ms
-                   pyimport)
+;; ;; disabled packages
+;; (disable-packages! solaire-mode
+;;                    osx-trash
+;;                    realgud
+;;                    realgud-trepan-ni
+;;                    ccls
+;;                    tide
+;;                    swiper
+;;                    forge
+;;                    code-review
+;;                    anaconda-mode
+;;                    company-anaconda
+;;                    lsp-python-ms
+;;                    pyimport)
 
 ;; ui
 (package! catppuccin-theme)
@@ -30,6 +30,7 @@
 (package! org-cliplink)
 (package! org-web-tools)
 (package! flycheck-inline)
+(package! obsidian)
 
 ;; misc
 (package! format-all)
