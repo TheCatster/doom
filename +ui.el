@@ -1,5 +1,8 @@
 ;;; +ui.el -*- lexical-binding: t; -*-
 
+;; Change the theme
+(setq doom-theme 'doom-nord)
+
 ;; Default font scale
 (setq resolution-factor 1)
 

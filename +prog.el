@@ -111,14 +111,15 @@
   (setq flycheck-c/c++-googlelint-executable "cpplint")
   (flycheck-add-next-checker 'c/c++-gcc '(t . c/c++-googlelint))
 
-  (setq flycheck-c/c++-gcc-executable "gcc-7"
-        flycheck-gcc-include-path '("/usr/local/inclue"))
+  (setq flycheck-c/c++-gcc-executable "gcc"
+        flycheck-gcc-include-path '("/usr/local/include"))
 
   (add-hook! c++-mode-hook
     (setq flycheck-gcc-language-standard "c++11"
           flycheck-clang-language-standard "c++11")))
 
 (use-package! lsp-rust
+  :defer t
   :custom
   (lsp-rust-analyzer-cargo-watch-enable t)
   (lsp-rust-analyzer-cargo-watch-command "clippy")
@@ -127,3 +128,12 @@
   (lsp-rust-analyzer-inlay-hints-mode t)
   (lsp-rust-analyzer-display-chaining-hints t)
   (lsp-rust-analyzer-display-parameter-hints t))
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))

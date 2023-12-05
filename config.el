@@ -1,11 +1,11 @@
 ;;; config.el -*- lexical-binding: t; -*-
 
+(load! "+ui")
 (load! "+os")
 (load! "+git")
 (load! "+misc")
 (load! "+text")
-;; (load! "+prog")
-(load! "+ui")
+(load! "+prog")
 (load! "+keys")
 (load! "+latex")
 (cond

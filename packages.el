@@ -1,22 +1,19 @@
 ;; -*- no-byte-compile: t; -*-
 
 ;; ;; disabled packages
-;; (disable-packages! solaire-mode
-;;                    osx-trash
-;;                    realgud
-;;                    realgud-trepan-ni
-;;                    ccls
-;;                    tide
-;;                    swiper
-;;                    forge
-;;                    code-review
-;;                    anaconda-mode
-;;                    company-anaconda
-;;                    lsp-python-ms
-;;                    pyimport)
-
-;; ui
-(package! catppuccin-theme)
+(disable-packages! solaire-mode
+                   osx-trash
+                   realgud
+                   realgud-trepan-ni
+                   ccls
+                   tide
+                   swiper
+                   forge
+                   code-review
+                   anaconda-mode
+                   company-anaconda
+                   lsp-python-ms
+                   pyimport)
 
 ;; text
 (package! adoc-mode)
@@ -63,3 +60,5 @@
   (package! lsp-docker))
 (package! py-isort)
 (package! flycheck-rust)
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

@@ -20,7 +20,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       (company +childframe)           ; the ultimate code completion backend
        (vertico +icons)
 
        :ui
@@ -80,7 +80,7 @@
        (eval +overlay)   ; run code, run (also, repls)
        ;;gist            ; interacting with github gists
        (lookup +dictionary +docsets +offline)
-       (lsp)
+       lsp
 
        (magit +forge)    ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
@@ -159,9 +159,6 @@
        (web +lsp)          ; the tubes
        (yaml +lsp)         ; JSON, but readable
        (zig +lsp)          ; C, but simpler
-
-       :email
-       (mu4e +org +gmail)
 
        :app
        calendar
