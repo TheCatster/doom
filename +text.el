@@ -104,6 +104,8 @@
 ;; Markdown ;;
 ;;;;;;;;;;;;;;
 
+(setq grip-update-after-change nil)
+
 (setq markdown-fontify-code-blocks-natively t)
 
 (remove-hook 'text-mode-hook #'auto-fill-mode)
