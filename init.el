@@ -26,7 +26,6 @@
        :ui
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
        (emoji +ascii +github +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
@@ -42,7 +41,6 @@
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        window-select
-       workspaces
        zen               ; distraction-free coding or writing
 
        :editor
@@ -50,7 +48,6 @@
        fold              ; (nigh) universal code folding
        (format +onsave)
        multiple-cursors  ; editing in many places at once
-       parinfer          ; turn lisp into python, sort of
        snippets          ; my elves. They type so I don't have to
 
        :emacs
