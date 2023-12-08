@@ -48,6 +48,7 @@
        fold              ; (nigh) universal code folding
        (format +onsave)
        multiple-cursors  ; editing in many places at once
+       parinfer          ; turn lisp into python, sort of
        snippets          ; my elves. They type so I don't have to
 
        :emacs
