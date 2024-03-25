@@ -485,7 +485,7 @@
 (setq preview-LaTeX-command '("%`%l \"\\nonstopmode\\nofiles\
 \\PassOptionsToPackage{" ("," . preview-required-option-list) "}{preview}\
 \\AtBeginDocument{\\ifx\\ifPreview\\undefined"
-                              preview-default-preamble "\\fi}\"%' \"\\detokenize{\" %t \"}\""))
+preview-default-preamble "\\fi}\"%' \"\\detokenize{\" %t \"}\""))
 
 (after! cdlatex
   (setq cdlatex-env-alist
@@ -524,3 +524,49 @@
 
 (when (>= emacs-major-version 28)
   (add-hook 'latex-mode-hook #'TeX-latex-mode))
+
+(after! org
+  (require 'org)
+  (require 'ox-latex)
+
+  (add-to-list 'org-latex-classes
+               '("catster-article" "\\documentclass{scrartcl}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+  ;; Default packages
+  (setq org-latex-default-packages-alist
+        '(("AUTO" "inputenc" t
+           ("pdflatex"))
+          ("T1" "fontenc" t
+           ("pdflatex"))
+          ("" "times" t)
+          ("" "fontspec" t)
+          ("" "graphicx" t)
+          ("letterpaper" "geometry" t)
+          ("" "grffile" t)
+          ("" "longtable" nil)
+          ("" "wrapfig" nil)
+          ("" "rotating" nil)
+          ("normalem" "ulem" t)
+          ("" "amsmath" t)
+          ("" "textcomp" t)
+          ("" "amssymb" t)
+          ("" "capt-of" nil)
+          ("dvipsnames" "xcolor" nil)
+          ("colorlinks=true, linkcolor=Blue, citecolor=BrickRed, urlcolor=PineGreen" "hyperref" nil)
+	  ("" "indentfirst" nil)))
+
+  (setq org-latex-listings 'minted
+        org-latex-packages-alist '(("" "minted"))
+        org-latex-minted-options '(("breaklines" "true")
+                                   ("breakanywhere" "true")
+                                   ("mathescape")
+                                   ("frame" "lines")
+                                   ("bgcolor" "yellow!5")))
+
+  (setq org-latex-pdf-process
+        '("latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f")))

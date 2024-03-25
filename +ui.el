@@ -1,7 +1,7 @@
 ;;; +ui.el -*- lexical-binding: t; -*-
 
 ;; Change the theme
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-material)
 
 ;; Default font scale
 (setq resolution-factor 1)
@@ -60,7 +60,7 @@
 
 (defface breakpoint-enabled '((t)) "Breakpoint face.")
 
-(when IS-MAC
+(when (featurep :system 'macos)
   ;; enable ligatures support
   ;; details here: https://github.com/tonsky/FiraCode/wiki/Emacs-instructions
   (ignore-errors

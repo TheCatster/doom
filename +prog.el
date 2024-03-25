@@ -1,6 +1,6 @@
 ;;; +prog.el -*- lexical-binding: t; -*-
 
-(when IS-MAC
+(when (featurep :system 'macos)
   (use-package! parinfer-rust-mode
     :init
     (setq parinfer-rust-auto-download nil)
@@ -133,8 +133,14 @@
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
+  :init (setq copilot-indent-offset-warning-disable 1)
   :bind (:map copilot-completion-map
               ("<tab>" . 'copilot-accept-completion)
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
+
+;; Fixes crazy Poetry errors
+(after! poetry
+  (remove-hook 'python-mode-hook #'poetry-tracking-mode)
+  (add-hook 'python-mode-hook 'poetry-track-virtualenv))

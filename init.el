@@ -76,7 +76,6 @@
        editorconfig
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)   ; run code, run (also, repls)
-       ;;gist            ; interacting with github gists
        (lookup +dictionary +docsets +offline)
        lsp
 
@@ -88,7 +87,7 @@
        upload            ; map local to remote projects via ssh/ftp
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
+       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
        (tty +osc)          ; improve the terminal Emacs experience
 
        :lang
@@ -132,6 +131,11 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag & drop files/images into org buffers
+        +crypt
+        +contacts
+        +gnuplot
+        +pretty
+        +roam2
         +jupyter           ; ipython/jupyter support for babel
         +pomodoro          ; be fruitful with the tomato technique
         +pandoc            ; export-with-pandoc support

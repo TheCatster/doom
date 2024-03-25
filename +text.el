@@ -5,10 +5,15 @@
 ;;;;;;;;;
 
 (after! text-mode
-  (setq-hook! 'text-mode-hook truncate-lines nil tab-width 2))
+  (setq-hook! 'text-mode-hook truncate-lines nil tab-width 8))
 
-(setq org-directory (expand-file-name "~/Nextcloud/org")
-      org-agenda-files (list org-directory)
+(when (featurep :system 'macos)
+  (setq org-directory (expand-file-name "~/Documents/org")))
+
+(when (featurep :system 'linux)
+  (setq org-directory (expand-file-name "~/Nextcloud/org")))
+
+(setq org-agenda-files (list org-directory)
       org-ellipsis " ▼ "
       org-hide-emphasis-markers t
       org-babel-python-command "python3"
@@ -68,6 +73,41 @@
   (advice-add #'org-deadline :around #'advise-org-default-time)
   (advice-add #'org-schedule :around #'advise-org-default-time))
 
+(after! org-roam
+  (setq org-roam-capture-templates
+        '(("d" "default" plain
+           "%?"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n")
+           :unnarrowed t)
+
+          ("b" "book notes" plain
+           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Book\n")
+           :unnarrowed t)
+
+          ("w" "website" plain
+           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Website\n")
+           :unnarrowed t)
+
+          ("p" "project" plain "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Project\n")
+           :unnarrowed t)
+
+          ("l" "programming languages" plain
+           "* Characteristics\n\n- Family: %?\n- Inspired by: \n\n* References:\n\n"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: ProgrammingLanguage\n")
+           :unnarrowed t)
+
+          ("h" "languages" plain
+           "* References:\n\n"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Language\n")
+           :unnarrowed t)
+
+          ("a" "arhs" plain "%?"
+           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: PSU ARHS\n")
+           :unnarrowed t))))
+
 (after! ox-pandoc
   (setq org-pandoc-options-for-revealjs '((variable . "highlight-theme=github")
                                           (variable . "theme=white"))))
@@ -88,7 +128,7 @@
             (long-break . ,(concat dotty-asset-dir "sounds/Glass.wav"))
             (stop . ,(concat dotty-asset-dir "sounds/Blow.wav")))))
 
-  (setq alert-default-style (if IS-MAC 'osx-notifier 'libnotify)
+  (setq alert-default-style (if (featurep :system 'macos) 'osx-notifier 'libnotify)
         pomm-audio-enabled t)
   (pomm-mode-line-mode))
 

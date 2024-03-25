@@ -4,7 +4,7 @@
 (setq delete-by-moving-to-trash t)
 
 ;; Nice features when I am on my MacBook Pro 16", which is essentially always.
-(when IS-MAC
+(when (featurep :system 'macos)
   (setq mac-option-key-is-meta nil
         mac-command-key-is-meta t
         mac-command-modifier 'meta

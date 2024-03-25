@@ -81,7 +81,7 @@
 
 (after! quickrun
   ;; quickrun--language-alist
-  (when IS-LINUX
+  (when (featurep :system 'macos)
     (quickrun-set-default "c++" "c++/g++")))
 
 (after! projectile
