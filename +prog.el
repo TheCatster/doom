@@ -1,11 +1,5 @@
 ;;; +prog.el -*- lexical-binding: t; -*-
 
-(when (featurep :system 'macos)
-  (use-package! parinfer-rust-mode
-    :init
-    (setq parinfer-rust-auto-download nil)
-    (setq parinfer-rust-library (concat doom-data-dir "libparinfer_rust.so"))))
-
 (use-package! which-func
   :defer t
   :commands which-function)

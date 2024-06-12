@@ -73,40 +73,57 @@
   (advice-add #'org-deadline :around #'advise-org-default-time)
   (advice-add #'org-schedule :around #'advise-org-default-time))
 
+(setq org-roam-node-display-template
+      (concat "${type:15} ${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+
+(setq org-roam-capture-templates
+      '(("c" "computers" plain
+         "%?"
+         :if-new (file+head "computers/${slug}.org"
+                            "#+title: ${title}\n#+filetags: \n")
+         :immediate-finish t
+         :unnarrowed t)
+        ("r" "reference" plain "%?"
+         :if-new
+         (file+head "references/${title}.org" "#+title: ${title}\n#+filetags: \n")
+         :immediate-finish t
+         :unnarrowed t)
+        ("w" "languages" plain "%?"
+         :if-new
+         (file+head "languages/${title}.org" "#+title: ${title}\n#+filetags: \n")
+         :immediate-finish t
+         :unnarrowed t)
+        ("l" "life" plain "%?"
+         :if-new
+         (file+head "life/${title}.org" "#+title: ${title}\n#+filetags: \n")
+         :immediate-finish t
+         :unnarrowed t)
+        ("p" "penn state" plain "%?"
+         :if-new
+         (file+head "penn state/${title}.org" "#+title: ${title}\n#+filetags: \n")
+         :immediate-finish t
+         :unnarrowed t)))
+
 (after! org-roam
-  (setq org-roam-capture-templates
-        '(("d" "default" plain
-           "%?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+date: %U\n")
-           :unnarrowed t)
+  (cl-defmethod org-roam-node-type ((node org-roam-node))
+    "Return the TYPE of NODE."
+    (condition-case nil
+        (file-name-nondirectory
+         (directory-file-name
+          (file-name-directory
+           (file-relative-name (org-roam-node-file node) org-roam-directory))))
+      (error ""))))
 
-          ("b" "book notes" plain
-           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Book\n")
-           :unnarrowed t)
+(use-package! websocket
+  :after org-roam)
 
-          ("w" "website" plain
-           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Website\n")
-           :unnarrowed t)
-
-          ("p" "project" plain "* Goals\n\n%?\n\n* Tasks\n\n** TODO Add initial tasks\n\n* Dates\n\n"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Project\n")
-           :unnarrowed t)
-
-          ("l" "programming languages" plain
-           "* Characteristics\n\n- Family: %?\n- Inspired by: \n\n* References:\n\n"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: ProgrammingLanguage\n")
-           :unnarrowed t)
-
-          ("h" "languages" plain
-           "* References:\n\n"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: Language\n")
-           :unnarrowed t)
-
-          ("a" "arhs" plain "%?"
-           :if-new (file+head "${slug}.org" "#+title: ${title}\n#+filetags: PSU ARHS\n")
-           :unnarrowed t))))
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 (after! ox-pandoc
   (setq org-pandoc-options-for-revealjs '((variable . "highlight-theme=github")

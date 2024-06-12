@@ -1,7 +1,7 @@
 ;;; +ui.el -*- lexical-binding: t; -*-
 
 ;; Change the theme
-(setq doom-theme 'doom-material)
+(setq doom-theme 'doom-palenight)
 
 ;; Default font scale
 (setq resolution-factor 1)
@@ -36,22 +36,22 @@
 ;;;;;;;;;;;;;;;;
 ;; Workspaces ;;
 ;;;;;;;;;;;;;;;;
-;; (after! persp-mode
-;;   (setq persp-emacsclient-init-frame-behaviour-override "main")
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main")
 
-;;   (setq +workspaces-on-switch-project-behavior nil)
+  (setq +workspaces-on-switch-project-behavior nil)
 
-;;   ;; see documentation for other possible values
-;;   (setq persp-add-buffer-on-after-change-major-mode t)
+  ;; see documentation for other possible values
+  (setq persp-add-buffer-on-after-change-major-mode t)
 
-;;   ;; above setting will not discriminate and bring ephemeral buffers e.g.
-;;   ;; *magit* which you probably don't want. You can filter them out.
-;;   (add-hook 'persp-common-buffer-filter-functions
-;;             ;; there is also `persp-add-buffer-on-after-change-major-mode-filter-functions'
-;;             #'(lambda (b) (string-prefix-p "*" (buffer-name b))))
-;;   (run-with-idle-timer 10 t #'doom/quicksave-session)
-;;   (add-hook 'after-make-frame-functions #'doom/quickload-session)
-;;   (add-hook 'delete-frame-functions #'doom/quicksave-session))
+  ;; above setting will not discriminate and bring ephemeral buffers e.g.
+  ;; *magit* which you probably don't want. You can filter them out.
+  (add-hook 'persp-common-buffer-filter-functions
+            ;; there is also `persp-add-buffer-on-after-change-major-mode-filter-functions'
+            #'(lambda (b) (string-prefix-p "*" (buffer-name b))))
+  (run-with-idle-timer 10 t #'doom/quicksave-session)
+  (add-hook 'after-make-frame-functions #'doom/quickload-session)
+  (add-hook 'delete-frame-functions #'doom/quicksave-session))
 
 (remove-hook 'doom-init-ui-hook #'blink-cursor-mode)
 

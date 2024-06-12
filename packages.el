@@ -29,6 +29,10 @@
 (package! flycheck-inline)
 (package! obsidian)
 
+;; Org Roam
+(unpin! org-roam)
+(package! org-roam-ui)
+
 ;; misc
 (package! format-all)
 (package! keycast)
