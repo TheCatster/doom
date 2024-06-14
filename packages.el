@@ -52,6 +52,7 @@
   :pin "67a2e76847a9ea9eff1f8e4eb37607f84b380ebb")
 (package! laas :recipe (:local-repo "lisp/LaTeX-auto-activating-snippets"))
 (package! auto-sudoedit)
+(package! shut-up)
 
 ;; programming
 (package! bazel-mode :recipe (:host github :repo "bazelbuild/emacs-bazel-mode"))
@@ -64,5 +65,3 @@
   (package! lsp-docker))
 (package! py-isort)
 (package! flycheck-rust)
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))

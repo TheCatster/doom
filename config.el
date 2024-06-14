@@ -27,6 +27,10 @@
 ;; Delete the selection when pasting
 (delete-selection-mode 1)
 
+;; Silence non-interactive output
+(when noninteractive
+  (shut-up-silence-emacs))
+
 ;; disable risky local variables warning
 (advice-add 'risky-local-variable-p :override #'ignore)
 
