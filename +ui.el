@@ -49,7 +49,8 @@
   (add-hook 'persp-common-buffer-filter-functions
             ;; there is also `persp-add-buffer-on-after-change-major-mode-filter-functions'
             #'(lambda (b) (string-prefix-p "*" (buffer-name b))))
-  (run-with-idle-timer 10 t #'doom/quicksave-session)
+  (shut-up
+    (run-with-idle-timer 10 t #'doom/quicksave-session))
   (add-hook 'after-make-frame-functions #'doom/quickload-session)
   (add-hook 'delete-frame-functions #'doom/quicksave-session))
 
