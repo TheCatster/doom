@@ -10,6 +10,9 @@
 (when (string= (downcase (system-name)) "korriban")
   (setq resolution-factor 1.5))
 
+(when (string= (downcase (system-name)) "kashyyk")
+  (setq resolution-factor 1.5))
+
 ;; JetBrains Mono has been my favourite font since first learning to program
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size (eval (round (* 13 resolution-factor)))))
 (setq doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size (eval (round (* 18 resolution-factor)))))

@@ -28,7 +28,6 @@
        doom-dashboard    ; a nifty splash screen for Emacs
        (emoji +ascii +github +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       hydra
        indent-guides     ; highlighted indent columns
        (ligatures +fira +hasklig +iosevka +pragmata-pro)         ; ligatures and symbols to make your code pretty again
        (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
@@ -84,7 +83,6 @@
        make              ; run make tasks from Emacs
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
-       rgb               ; creating color strings
        upload            ; map local to remote projects via ssh/ftp
 
        :os
