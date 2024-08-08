@@ -20,7 +20,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company +childframe)           ; the ultimate code completion backend
+       ;;(company +childframe)           ; the ultimate code completion backend
        (vertico +icons)
 
        :ui
@@ -28,7 +28,6 @@
        doom-dashboard    ; a nifty splash screen for Emacs
        (emoji +ascii +github +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       hydra
        indent-guides     ; highlighted indent columns
        (ligatures +fira +hasklig +iosevka +pragmata-pro)         ; ligatures and symbols to make your code pretty again
        (modeline +light)          ; snazzy, Atom-inspired modeline, plus API
@@ -37,7 +36,7 @@
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
         +defaults)       ; default popup rules
-       (treemacs +lsp)
+       (treemacs)
        unicode           ; extended unicode support for various languages
        vc-gutter         ; vcs diff in the fringe
        window-select
@@ -71,20 +70,20 @@
 
        :tools
        biblio
-       (debugger +lsp)
+       (debugger)
        direnv
-       (docker +lsp)
+       (docker)
        editorconfig
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)   ; run code, run (also, repls)
        (lookup +dictionary +docsets +offline)
-       lsp
+       ;; Using LSP Bridge instead
+       ;;(lsp +eglot)
 
        (magit +forge)    ; a git porcelain for Emacs
        make              ; run make tasks from Emacs
        pdf               ; pdf enhancements
        prodigy           ; FIXME managing external services & code builders
-       rgb               ; creating color strings
        upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -93,8 +92,8 @@
 
        :lang
        ;;agda              ; types of types of types of types...
-       (cc +lsp)           ; C/C++/Obj-C madness
-       (clojure +lsp)      ; java with a lisp
+       (cc )           ; C/C++/Obj-C madness
+       (clojure )      ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
@@ -113,16 +112,16 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp)           ; the hipster dialect
+       (go )           ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       (json +lsp)                ; At least it ain't XML
-       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)
+       (json )                ; At least it ain't XML
+       ;;(java )       ; the poster child for carpal tunnel syndrome
+       (javascript )
        (julia +snail)      ; a better, faster MATLAB
        ;; kotlin           ; a better, slicker Java(Script)
-       (latex +cdlatex +fold +lsp) ; writing papers in Emacs has never been so fun
+       (latex +cdlatex +fold ) ; writing papers in Emacs has never been so fun
        ;;lean
        ;;ledger            ; an accounting system in Emacs
        ;; lua              ; one-based indices? one-based indices
@@ -133,7 +132,6 @@
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag & drop files/images into org buffers
         +crypt
-        +contacts
         +gnuplot
         +pretty
         +roam2
@@ -144,24 +142,24 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +pyenv +poetry +pyright +lsp)
+       (python +pyenv +poetry +pyright )
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        (rest +jq)          ; Emacs as a REST client
        ;;rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (rust )         ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       (sh +lsp)           ; she sells {ba,z,fi}sh shells on the C xor
+       (sh )           ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +lsp)          ; the tubes
-       (yaml +lsp)         ; JSON, but readable
-       (zig +lsp)          ; C, but simpler
+       (web )          ; the tubes
+       (yaml )         ; JSON, but readable
+       (zig )          ; C, but simpler
 
        :app
        calendar

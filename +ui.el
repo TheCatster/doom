@@ -4,7 +4,7 @@
 (setq doom-theme 'doom-palenight)
 
 ;; Default font scale
-(setq resolution-factor 1)
+(setq resolution-factor 2)
 
 ;; When on my desktop, increase the font size
 (when (string= (downcase (system-name)) "korriban")
