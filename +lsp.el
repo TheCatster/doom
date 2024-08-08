@@ -1,5 +1,9 @@
 ;;; +lsp.el -*- lexical-binding: t; -*-
 
+;; Performance improvements
+(setenv "LSP_USE_PLISTS" "true")
+(setq lsp-use-plists t)
+
 (after! lsp-clangd
   (setq lsp-clients-clangd-args '("-j=3"
                                   "--background-index"
@@ -20,6 +24,8 @@
 (setq +lsp-prompt-to-install-server 'quiet)
 
 (after! lsp-mode
+  (setq +format-with-lsp nil)
+
   (setq lsp-log-io nil
         lsp-file-watch-threshold 4000
         lsp-headerline-breadcrumb-enable t

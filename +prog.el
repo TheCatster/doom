@@ -1,5 +1,10 @@
 ;;; +prog.el -*- lexical-binding: t; -*-
 
+(use-package! lsp-bridge
+  :config
+  (setq lsp-bridge-enable-log nil)
+  (global-lsp-bridge-mode))
+
 (use-package! which-func
   :defer t
   :commands which-function)
