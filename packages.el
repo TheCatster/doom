@@ -30,6 +30,7 @@
 (package! flycheck-inline)
 (package! obsidian)
 (package! breadcrumb)
+(package! mermaid-ts-mode)
 
 ;; Org Roam
 (unpin! org-roam)
@@ -44,7 +45,6 @@
 (package! magit-delta)
 (package! citre)
 (package! imenu-list)
-(package! go-translate)
 (package! super-save)
 (package! diredfl)
 (package! tokei)

@@ -4,6 +4,9 @@
 ;; Org ;;
 ;;;;;;;;;
 
+;; Add Mermaid (diagrams) to tree sitter
+(push '(mermaid "https://github.com/monaqa/tree-sitter-mermaid") treesit-language-source-alist)
+
 (after! text-mode
   (setq-hook! 'text-mode-hook truncate-lines nil tab-width 8))
 
@@ -12,6 +15,9 @@
 
 (when (featurep :system 'linux)
   (setq org-directory (expand-file-name "~/Nextcloud/org")))
+
+(when (string= (downcase (system-name)) "korriban")
+  (setq org-directory (expand-file-name "/mnt/c/Users/Daniil/Nextcloud/org")))
 
 (setq org-agenda-files (list org-directory)
       org-ellipsis " ▼ "

@@ -8,7 +8,7 @@
 
 ;; When on my desktop, increase the font size
 (when (string= (downcase (system-name)) "korriban")
-  (setq resolution-factor 1.5))
+  (setq resolution-factor 1.25))
 
 (when (string= (downcase (system-name)) "kashyyk")
   (setq resolution-factor 1.5))

@@ -68,17 +68,6 @@
 ;; certain modes (like `prog-mode'), set it like this.
 ;; citre-auto-enable-citre-mode-modes '(prog-mode)
 
-
-(use-package! go-translate
-  :defer t
-  :config
-  (setq gts-translate-list '(("en" "ru") ("ru" "en") ("en" "de")))
-  (setq gts-default-translator
-        (gts-translator
-         :picker (gts-prompt-picker)
-         :engines (list (gts-google-engine) (gts-google-rpc-engine))
-         :render (gts-buffer-render))))
-
 (after! quickrun
   ;; quickrun--language-alist
   (when (featurep :system 'macos)
